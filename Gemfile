@@ -64,3 +64,5 @@ end
 group :development do
   gem 'spork', '0.9.0.rc9'
 end
+
+gem "unicorn"
