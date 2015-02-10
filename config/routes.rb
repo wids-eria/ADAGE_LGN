@@ -39,7 +39,10 @@ Ada::Application.routes.draw do
       get :sessions
       get :contexts
       get :developer_tools
+      get :logger
       get :researcher_tools
+      get :sync_time
+      delete :clear_data
     end
   end
 
@@ -69,6 +72,7 @@ Ada::Application.routes.draw do
 
   namespace :stats do
     post :save_stat
+    post :save_stats
     get :get_stat
     get :get_stats
   end
