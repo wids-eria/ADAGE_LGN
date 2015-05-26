@@ -122,9 +122,13 @@ class User < ActiveRecord::Base
       player_name: name,
       email: name+'@guest.com',
       guest: true,
+      password: Digest::SHA1.hexdigest(Time.now.to_s)
     )
     return guest
   end
+
+
+
 
   def self.find_for_brainpop_auth(player_id, signed_in_resource=nil)
 
@@ -229,54 +233,6 @@ class User < ActiveRecord::Base
     return values
 
   end
-
-  def data_to_csv(csv, gameName, schema='')
-    keys = Hash.new
-    data = nil
-    if schema.present?
-      data = self.data(gameName).where(schema: schema).asc(:timestamp).entries
-    else
-      data = self.data(gameName).asc(:timestamp).entries
-    end
-    types = self.data(gameName).distinct(:key)
-    examples = Array.new
-    types.each do |type|
-      ex = data.select{ |d| d.key.include?(type)}.last
-      if ex != nil
-        examples << ex
-      end
-    end
-    all_attrs = Array.new
-    examples.each do |e|
-      e.attributes.keys.each do |k|
-        all_attrs << k
-      end
-    end
-    csv << ["player", "epoch time"] + all_attrs.uniq
-    data.each do |entry|
-      out = Array.new
-      out << self.player_name
-      if entry.respond_to?('timestamp')
-        if entry.timestamp.to_s.include?(':')
-          out << DateTime.strptime(entry.timestamp.to_s, "%m/%d/%Y %H:%M:%S").to_time.to_i
-        else
-          out << 'does not compute'
-        end
-      else
-        out << 'no timestamp'
-      end
-      all_attrs.uniq.each do |attr|
-        if entry.attributes.keys.include?(attr)
-          out << entry.attributes[attr]
-        else
-          out << ""
-        end
-      end
-      csv << out
-    end
-    return csv
-  end
-
 
   #returns session for this player
   def session_information(gameName= nil, gameVersion= nil)
@@ -386,6 +342,13 @@ class User < ActiveRecord::Base
       end
     end
     return contexts
+  end
+
+  def to_raw_qr
+    if self.guest
+      text = ActiveSupport::JSON.encode({username: self.player_name,password: self.password,timestamp: Time.now})
+      return text
+    end
   end
 
   protected

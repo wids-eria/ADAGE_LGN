@@ -77,7 +77,6 @@ class UsersController < ApplicationController
       @names << game
       @counts << {x: i, y: game_data.distinct(:session_token).count}
     end
-    puts @counts.inspect
   end
 
   def session_logs
@@ -99,10 +98,12 @@ class UsersController < ApplicationController
     @user = User.where(player_name: params[:player_name]).first
     respond_to do |format|
       if @user.present?
-        format.any { redirect_to user_path(@user) }
+        format.json { render :json =>{player_name: params[:player_name],user_id: @user.id}, :status => :ok }
+        format.html { redirect_to user_path(@user) }
       else
         flash[:error] = 'Player name not found'
-        format.any { redirect_to :back }
+        format.json { render json: {error:"Player name not found"}, status: :no_content }
+        format.html { redirect_to :back }
       end
     end
   end
@@ -280,7 +281,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def generate_guest
+    @amount = params[:amount].to_i
+
+    if @amount >= 0 
+      @guests = []
+      
+      for i in 1..@amount
+        @guests << User.create_guest()
+      end
+      render "guests"
+    end
+  end
+
   protected
+
 
   def application
     @application ||= Client.where(app_token: params[:client_id]).first
