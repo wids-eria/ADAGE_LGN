@@ -47,6 +47,12 @@ Ada::Application.routes.draw do
   end
 
   resources :implementations
+  resources :public_events do
+    collection do
+      get :get_events
+      delete :destroy
+    end
+  end
 
   resources :data do
     collection do

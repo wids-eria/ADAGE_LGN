@@ -378,6 +378,36 @@ ALTER SEQUENCE implementations_id_seq OWNED BY implementations.id;
 
 
 --
+-- Name: public_events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE public_events (
+    id integer NOT NULL,
+    user_id integer,
+    data json NOT NULL
+);
+
+
+--
+-- Name: public_events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public_events_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: public_events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public_events_id_seq OWNED BY public_events.id;
+
+
+--
 -- Name: roles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -618,6 +648,13 @@ ALTER TABLE ONLY implementations ALTER COLUMN id SET DEFAULT nextval('implementa
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY public_events ALTER COLUMN id SET DEFAULT nextval('public_events_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
 
 
@@ -720,6 +757,14 @@ ALTER TABLE ONLY groups
 
 ALTER TABLE ONLY implementations
     ADD CONSTRAINT implementations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: public_events_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY public_events
+    ADD CONSTRAINT public_events_pkey PRIMARY KEY (id);
 
 
 --
@@ -843,6 +888,13 @@ CREATE INDEX fk__groups_users_user_id ON groups_users USING btree (user_id);
 --
 
 CREATE INDEX fk__implementations_game_id ON implementations USING btree (game_id);
+
+
+--
+-- Name: fk__public_events_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__public_events_user_id ON public_events USING btree (user_id);
 
 
 --
@@ -1048,6 +1100,14 @@ ALTER TABLE ONLY implementations
 
 
 --
+-- Name: fk_public_events_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public_events
+    ADD CONSTRAINT fk_public_events_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- Name: fk_roles_game_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1160,3 +1220,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140709183815');
 INSERT INTO schema_migrations (version) VALUES ('20150107220957');
 
 INSERT INTO schema_migrations (version) VALUES ('20150109222014');
+
+INSERT INTO schema_migrations (version) VALUES ('20150526220602');
