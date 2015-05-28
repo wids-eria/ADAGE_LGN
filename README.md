@@ -20,6 +20,7 @@ a partnership with [The Learning Games Network](http://www.learninggamesnetwork.
 * [Save Game API](https://github.com/wids-eria/ADAGE/blob/master/doc/save_games.md)
 * [Stat Storing API](https://github.com/wids-eria/ADAGE/blob/master/doc/stat_storing.md)
 * [Achievement Storing API](https://github.com/wids-eria/ADAGE/blob/master/doc/achievement_storing.md)
+* [Public Events API](https://github.com/wids-eria/ADAGE/blob/master/doc/public_events.md)
 * [User Query API](https://github.com/wids-eria/ADAGE/blob/master/doc/user_query.md)
 * [Configuration File API](https://github.com/wids-eria/ADAGE/blob/master/doc/config_storage.md)
 
