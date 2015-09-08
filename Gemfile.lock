@@ -346,3 +346,6 @@ DEPENDENCIES
   unicorn
   webmock
   zoo_pass!
+
+BUNDLED WITH
+   1.10.3

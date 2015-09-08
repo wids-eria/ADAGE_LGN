@@ -146,6 +146,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_file_headers(filename,type)
+    headers["Content-Type"] = type
+    headers["Content-disposition"] = "attachment; filename='#{filename}'"
+  end
+
+  def set_streaming_headers
+    headers['X-Accel-Buffering'] = 'no'
+    headers["Cache-Control"] ||= "no-cache"
+    headers.delete("Content-Length")
+    headers['Last-Modified'] = Time.now.ctime.to_s
+  end
+
   protected
 
   def oauth_access_token
