@@ -12,17 +12,17 @@ a partnership with [The Learning Games Network](http://www.learninggamesnetwork.
 
 ###Documentation
 
-* [Installation Guide](https://github.com/wids-eria/ADAGE/blob/master/doc/install.md)
-* [Data Specification](https://github.com/wids-eria/ADAGE/blob/master/doc/data_spec.md)
-* [Authentication API](https://github.com/wids-eria/ADAGE/blob/master/doc/authentication.md)
-* [Data Logging API](https://github.com/wids-eria/ADAGE/blob/master/doc/data_logging.md)
-* [Data Query API](https://github.com/wids-eria/ADAGE/blob/master/doc/data_query.md)
-* [Save Game API](https://github.com/wids-eria/ADAGE/blob/master/doc/save_games.md)
-* [Stat Storing API](https://github.com/wids-eria/ADAGE/blob/master/doc/stat_storing.md)
-* [Achievement Storing API](https://github.com/wids-eria/ADAGE/blob/master/doc/achievement_storing.md)
-* [Public Events API](https://github.com/wids-eria/ADAGE/blob/master/doc/public_events.md)
-* [User Query API](https://github.com/wids-eria/ADAGE/blob/master/doc/user_query.md)
-* [Configuration File API](https://github.com/wids-eria/ADAGE/blob/master/doc/config_storage.md)
+* [Installation Guide](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/install.md)
+* [Data Specification](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/data_spec.md)
+* [Authentication API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/authentication.md)
+* [Data Logging API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/data_logging.md)
+* [Data Query API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/data_query.md)
+* [Save Game API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/save_games.md)
+* [Stat Storing API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/stat_storing.md)
+* [Achievement Storing API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/achievement_storing.md)
+* [Public Events API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/public_events.md)
+* [User Query API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/user_query.md)
+* [Configuration File API](https://github.com/wids-eria/ADAGE_LGN/blob/master/doc/config_storage.md)
 
 
 ###Acknowledgments 
