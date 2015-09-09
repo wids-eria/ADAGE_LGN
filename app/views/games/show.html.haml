@@ -29,7 +29,9 @@
     = link_to 'Participant context information', contexts_game_path(@game)
     %br
 
-
+%h3 Stats Export
+= link_to 'JSON', stats_export_path(@game,format: :json), class: [:btn, "btn-default"]
+= link_to 'CSV', stats_export_path(@game,format: :csv), class: [:btn, "btn-default"]
 
 
 

@@ -81,7 +81,7 @@ Ada::Application.routes.draw do
     post :save_stats
     get :get_stat
     get :get_stats
-    get :export
+    get "export/:id", action: :export, as: :export
     delete :clear_stats
   end
 

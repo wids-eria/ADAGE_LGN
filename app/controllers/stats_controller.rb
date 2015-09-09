@@ -110,20 +110,10 @@ class StatsController < ApplicationController
     end
   end
 
-
   def export
-    #Find Game and user through access token
-    access_token = AccessToken.where(consumer_secret: params[:access_token]).first
+    @game = Game.find(params[:id])
 
-    errors = []
-    @game = nil
-    unless access_token.nil?
-      @game = access_token.client.implementation.game
-    else
-      errors << "Invalid Access Token"
-      status = 400
-    end
-
+    authorize! :read, @game
     stats = Stat.where(game_id: @game)
     respond_to do |format|
       format.json {
