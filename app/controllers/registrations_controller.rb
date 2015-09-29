@@ -12,4 +12,5 @@ class RegistrationsController < Devise::RegistrationsController
     end
     super
   end
+
 end
