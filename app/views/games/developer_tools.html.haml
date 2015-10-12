@@ -1,3 +1,4 @@
+= javascript_include_tag "developer_tools"
 %div#dev-tools
   %h2= @game.name.capitalize
   %br
@@ -13,9 +14,17 @@
             = version.name
             %br
             -if version.client != nil
-              = 'App Token ' + version.client.app_token
+              = 'App Token '  
+              %span#appTokenText 
+                = version.client.app_token
+              %button.btn.btn-primary#tokenClipboardButton
+                copy
               %br
-              = 'App Secret ' + version.client.app_secret
+              = 'App Secret ' 
+              %span#appSecretText
+                = version.client.app_secret
+              %button.btn.btn-primary#secretClipboardButton
+                copy
               %br
 
       = render partial: 'implementations/add', locals: {game: @game}
